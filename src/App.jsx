@@ -2,7 +2,8 @@ import {Routes, Route, Navigate} from 'react-router-dom'
 import Signup from './components/auth/Signup'
 import Home from './components/Home'
 import UserDashboard from './components/UserDashboard';
-import { useUser } from './context/UserContext'
+import Chat from './components/chat/Chat';
+import { useUser } from './context/UserContext';
 
 function App() {
   const {currentUser} = useUser();
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/dashboard" element={<UserDashboard/>}/>
+        <Route path="chat" element={<Chat />} />
       </Routes>
     </>
   )
