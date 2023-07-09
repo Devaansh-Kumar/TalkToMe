@@ -3,7 +3,7 @@ import annyang from 'annyang';
 
 const SpeechToText = ({question, setQuestion}) => {
   const [isListening, setIsListening] = useState(false);
-
+  let micIcon;
   useEffect(() => {
     if (isListening) {
       annyang.start();
@@ -32,9 +32,9 @@ const SpeechToText = ({question, setQuestion}) => {
     <div>
       <button
         onClick={toggleListening}
-        style={{ backgroundColor: isListening ? 'gray' : 'inherit' }}
+        className=""
       >
-        {<img src='../../../microphone.png'/> }
+        {<img src={isListening ? '../../../mic-on.png' : '../../../mic-off.png'} className='rounded-full h-10 cursor-pointer'/> }
       </button>
     </div>
   );
