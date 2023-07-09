@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "annyang": "^2.6.1",
     "axios": "^1.4.0",
     "firebase": "^9.19.1",
     "react": "^18.2.0",
@@ -17,13 +18,20 @@
     "react-dropzone": "^14.2.3",
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.14.1",
-    "react-scrollable-feed": "^1.3.2"
+    "react-scrollable-feed": "^1.3.2",
+    "react-speech": "^1.0.2",
+    "react-speech-recognition": "^3.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@vitejs/plugin-react": "^4.0.1",
     "autoprefixer": "^10.4.14",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^9.1.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^8.44.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
