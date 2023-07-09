@@ -4,22 +4,25 @@ import Home from './components/Home'
 import UserDashboard from './components/UserDashboard';
 import Chat from './components/chat/Chat';
 import { useUser } from './context/UserContext';
+import NavBar from './components/NavBar';
 
 function App() {
   const {currentUser} = useUser();
 
   const RequireAuth = ({children})=>{
-    return currentUser? <>{children}</> : <Navigate to="/signup" />
+    return currentUser? <>{children}</> : <Navigate to="/" />
   }
   return (
     <>
-      <div className="text-3xl font-bold underline">TalkToMe</div>
+    <NavBar/>
+    <div className="container">
       <Routes>
-        <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
+        <Route path="/" element={<Home/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/dashboard" element={<UserDashboard/>}/>
-        <Route path="chat" element={<Chat />} />
+        <Route path="/dashboard" element={<RequireAuth><UserDashboard/></RequireAuth>}/>
+        <Route path="/chat" element={<Chat />} />
       </Routes>
+    </div>
     </>
   )
 }
