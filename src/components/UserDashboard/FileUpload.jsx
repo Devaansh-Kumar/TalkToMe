@@ -2,13 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react'
 import {useDropzone} from 'react-dropzone'
 import { storage } from '../../firebase'
 import { useUser } from '../../context/UserContext'
-import { getDownloadURL, getMetadata, list, listAll, ref, uploadBytesResumable } from 'firebase/storage';
+import {listAll, ref, uploadBytesResumable } from 'firebase/storage';
 
 
-function FileUpload() {
+function FileUpload({setUploadedFiles}) {
   const [percent, setPercent] = useState(0)
   const [uploading, setUploading] = useState(false)
-  const [uploadedFiles, setUploadedFiles] = useState([])
   const user = useUser();
 
   const getFiles = async ()=>{
@@ -52,17 +51,24 @@ function FileUpload() {
   
 
   return (
-    <section className="container">
-      <div className='p-2 bg-stone-300 rounded-md'>
-      <div {...getRootProps({className: 'bg-stone-300 p-5 rounded-md border-dashed border-2 border-stone-700'})}>
-        <input {...getInputProps()} />
-        {uploading? <p>{percent} % done </p> :<p>Drag 'n' drop some files here, or click to select files</p>}
-      </div>
-      </div>
-      {uploadedFiles.length? uploadedFiles.map(file=>(
-        <p key={file}>{file}</p>
-      )
-      ): <p>Loading...</p>}      
+    <section className=''>
+      <div className="m-5" {...getRootProps()}>
+    <label
+        class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+        <span className="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <span className="font-medium text-gray-600">
+                Drop file to upload, or
+                <span className="text-blue-600 underline"> browse</span>
+            </span>
+        </span>
+        <input {...getInputProps()}/>
+    </label>
+</div>    
     </section>
   );
 }
