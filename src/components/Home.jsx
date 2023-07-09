@@ -264,7 +264,6 @@ const Home = () => {
     </span>
     </div>
 </footer>
-
     </>
   );
 };
