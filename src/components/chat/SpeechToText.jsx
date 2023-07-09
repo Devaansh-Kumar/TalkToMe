@@ -3,7 +3,7 @@ import annyang from 'annyang';
 
 const SpeechToText = ({question, setQuestion}) => {
   const [isListening, setIsListening] = useState(false);
-  let micIcon;
+
   useEffect(() => {
     if (isListening) {
       annyang.start();
