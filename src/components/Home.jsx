@@ -3,12 +3,9 @@ import { useUser } from '../context/UserContext'
 import SignOut from './auth/SignOut';
 
 const Home = () => {
-  const {currentUser} = useUser();
   return (
     <>
-    <div>You are now signed in</div>
-    <p>Hello {currentUser.name}!</p>
-    <SignOut/>
+    <div>Welcome to TalkToMe!</div>
     </>
   )
 }
