@@ -30,8 +30,8 @@ const Chat = () => {
           return <Message key={i} index={i} message={message.message} />;
         })}
       </ScrollableFeed>
-        <form onSubmit={handleSubmit} className="flex flex-row my-4 self-center px-1">
-          <div className="flex flex-row justify-between self-center flex-grow">
+      <div className="flex flex-row my-4 self-center px-1">
+        <form onSubmit={handleSubmit} className="flex flex-row justify-between self-center flex-grow">
             <input
               type="text"
               value={question}
@@ -45,9 +45,9 @@ const Chat = () => {
             >
               Send
             </button>
-          </div>
-          <Speech question={question} setQuestion={setQuestion} />
         </form>
+        <Speech question={question} setQuestion={setQuestion} />
+      </div>
     </div>
   );
 };
