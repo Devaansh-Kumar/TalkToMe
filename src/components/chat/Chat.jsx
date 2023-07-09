@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import ScrollableFeed from "react-scrollable-feed";
-import Message from "./Message";
+import React, { useState } from 'react';
+import ScrollableFeed from 'react-scrollable-feed';
+import Message from './Message';
+import Speech from './SpeechToText';
+
 
 const Chat = () => {
   const [question, setQuestion] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
-
-  const handleSubmit = (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
 
     if (question.trim() === "") {
@@ -43,6 +44,7 @@ const Chat = () => {
           </button>
         </div>
       </form>
+      <Speech question={question} setQuestion={setQuestion}/>
     </div>
   );
 };
