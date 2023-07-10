@@ -10,7 +10,7 @@ export default function NavBar() {
 
 <nav className="bg-white dark:bg-gray-900 w-full z-20 fixed left-0 top-0 border-b border-gray-200 dark:border-gray-600">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="#" className="flex items-center">
+  <a href="/" className="flex items-center">
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">TalkToMe</span>
   </a>
   <div className="flex md:order-2">

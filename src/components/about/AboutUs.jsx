@@ -32,7 +32,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="flex justify-center font-bold text-4xl mt-12 mb-3">
-        The Team
+        Team LLMao
       </div>
       <div className="flex flex-wrap justify-around">
         <Teamates
