@@ -78,6 +78,7 @@ const Chat = () => {
         <Message key={item.id} {...item} profilePic={`${item.type == 'question'? currentUser.profile_pic:"/bot.png"}`}/>
        ))}
       </ScrollableFeed>
+          <div className="fixed bottom-0 w-screen">
       <div className="flex flex-row my-4 self-center px-1">
         <form onSubmit={handleSubmit} className="flex flex-row justify-between self-center flex-grow">
             <input
@@ -95,6 +96,7 @@ const Chat = () => {
             </button>
         </form>
         {/* <Speech question={question} setQuestion={setQuestion} /> */}
+      </div>
       </div>
     </div>
   );
