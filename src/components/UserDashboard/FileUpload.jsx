@@ -6,11 +6,10 @@ import { listAll, ref, uploadBytesResumable } from "firebase/storage";
 import axios from "axios";
 
 
-function FileUpload({ setUploadedFiles }) {
+function FileUpload({ setUploadedFiles, setUnderProcessing }) {
   const [percent, setPercent] = useState(0);
   const [uploading, setUploading] = useState(false);
-  const [isProcessed, setIsProcessed] = useState(false);
-  const user = useUser();
+  const {currentUser} = useUser();
 
   const callCloudFunction = async (file_path, user_id) => {
     console.log(file_path, user_id);
@@ -25,12 +24,11 @@ function FileUpload({ setUploadedFiles }) {
       }
     });
     console.log(response);
-
-    setIsProcessed(true);
+    setUnderProcessing("");
   };
 
   const getFiles = async () => {
-    const listRef = ref(storage, `/${user.currentUser.uid}/`);
+    const listRef = ref(storage, `/${currentUser.uid}/`);
     console.log(listRef);
     const res = await listAll(listRef);
     console.log("this is ref", res);
@@ -48,10 +46,11 @@ function FileUpload({ setUploadedFiles }) {
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     setUploading(true);
-    const storageRef = ref(storage, `/${user.currentUser.uid}/${file.name}`);
+    const storageRef = ref(storage, `/${currentUser.uid}/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     console.log("this is storageref", storageRef);
 
+    setUnderProcessing(file.name);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -64,9 +63,8 @@ function FileUpload({ setUploadedFiles }) {
       () => {
         setUploading(false);
         getFiles();
-        setIsProcessed(false);
         let file_path = `gs://${storageRef.bucket}/${storageRef.fullPath}`;
-        callCloudFunction(file_path, user.currentUser.uid);
+        callCloudFunction(file_path, currentUser.uid);
         // getDownloadURL(uploadTask.snapshot.ref).then(url=> console.log(url));
       }
     );
