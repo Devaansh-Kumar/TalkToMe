@@ -31,9 +31,7 @@ function FileUpload({ setUploadedFiles }) {
 
   const getFiles = async () => {
     const listRef = ref(storage, `/${user.currentUser.uid}/`);
-    console.log(listRef);
     const res = await listAll(listRef);
-    console.log("this is ref", res);
     const list = [];
     res.items.forEach((file) => {
       list.push(file.name);

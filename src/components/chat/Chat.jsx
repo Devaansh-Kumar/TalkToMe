@@ -68,13 +68,13 @@ const Chat = () => {
     console.log(convoItem)
   };
   
-  let synthesis;
-  if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-    synthesis = true;
-  } else {
-    synthesis = false;
-  }
-  console.log("this is synthesis: ", synthesis);
+  // let synthesis;
+  // if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+  //   synthesis = true;
+  // } else {
+  //   synthesis = false;
+  // }
+  // console.log("this is synthesis: ", synthesis);
   return (
     <div>
       <ScrollableFeed className="mb-16">
