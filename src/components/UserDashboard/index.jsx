@@ -13,7 +13,7 @@ const UserDashboard = () => {
     <FileUpload setUploadedFiles={setUploadedFiles}/>
     <h3 class="text-3xl font-bold dark:text-white my-4">Previous Uploads</h3>
 {uploadedFiles.length? (<ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
-    {uploadedFiles.map(file=>(<UploadListItem file={file}/>))}
+    {uploadedFiles.map(file=>(<UploadListItem file={file} key={file}/>))}
 </ul>) : <p>Loading...</p> }
     </div>
   )

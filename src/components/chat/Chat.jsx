@@ -67,7 +67,7 @@ const Chat = () => {
 
   return (
     <div>
-      <ScrollableFeed>
+      <ScrollableFeed className="mb-16">
        {chatHistory.length? chatHistory.map(chat=>(
         <div key={`${chat.id}`}>
         <Message  type="question" message={chat.question} profilePic={currentUser.profile_pic}/>
