@@ -3,15 +3,37 @@ import { useDropzone } from "react-dropzone";
 import { storage } from "../../firebase";
 import { useUser } from "../../context/UserContext";
 import { listAll, ref, uploadBytesResumable } from "firebase/storage";
+import axios from "axios";
+
 
 function FileUpload({ setUploadedFiles }) {
   const [percent, setPercent] = useState(0);
   const [uploading, setUploading] = useState(false);
+  const [isProcessed, setIsProcessed] = useState(false);
   const user = useUser();
+
+  const callCloudFunction = async (file_path, user_id) => {
+    console.log(file_path, user_id);
+    const cloudFunctionURL =
+      "https://us-central1-talktome-e4031.cloudfunctions.net/textConvert_store";
+    const response = await axios.post(cloudFunctionURL, {
+      file_path: file_path,
+      user_id: user_id,
+    }, {
+      headers: {
+        "Content-Type" : "application/json",
+      }
+    });
+    console.log(response);
+
+    setIsProcessed(true);
+  };
 
   const getFiles = async () => {
     const listRef = ref(storage, `/${user.currentUser.uid}/`);
+    console.log(listRef);
     const res = await listAll(listRef);
+    console.log("this is ref", res);
     const list = [];
     res.items.forEach((file) => {
       list.push(file.name);
@@ -28,7 +50,7 @@ function FileUpload({ setUploadedFiles }) {
     setUploading(true);
     const storageRef = ref(storage, `/${user.currentUser.uid}/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
-    console.log(storageRef);
+    console.log("this is storageref", storageRef);
 
     uploadTask.on(
       "state_changed",
@@ -42,6 +64,9 @@ function FileUpload({ setUploadedFiles }) {
       () => {
         setUploading(false);
         getFiles();
+        setIsProcessed(false);
+        let file_path = `gs://${storageRef.bucket}/${storageRef.fullPath}`;
+        callCloudFunction(file_path, user.currentUser.uid);
         // getDownloadURL(uploadTask.snapshot.ref).then(url=> console.log(url));
       }
     );

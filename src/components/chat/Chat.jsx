@@ -64,7 +64,14 @@ const Chat = () => {
     await setDoc(docRef, convoItem)
     console.log(convoItem)
   };
-
+  
+  let synthesis;
+  if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+    synthesis = true;
+  } else {
+    synthesis = false;
+  }
+  console.log("this is synthesis: ", synthesis);
   return (
     <div>
       <ScrollableFeed className="mb-16">
@@ -95,7 +102,7 @@ const Chat = () => {
               Send
             </button>
         </form>
-        {/* <Speech question={question} setQuestion={setQuestion} /> */}
+        {synthesis && <Speech question={question} setQuestion={setQuestion} />}
       </div>
       </div>
     </div>

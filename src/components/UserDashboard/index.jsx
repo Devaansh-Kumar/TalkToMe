@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import FileUpload from './FileUpload'
-import UploadListItem from './UploadListItem'
+import React, { useState } from "react";
+import FileUpload from "./FileUpload";
+import UploadListItem from "./UploadListItem";
 
 const UserDashboard = () => {
-  const [uploadedFiles, setUploadedFiles] = useState([])
+  const [uploadedFiles, setUploadedFiles] = useState([]);
   return (
     <div className='container mx-auto'>
     <div >
@@ -16,7 +16,7 @@ const UserDashboard = () => {
     {uploadedFiles.map(file=>(<UploadListItem file={file} key={file}/>))}
 </ul>) : <p>Loading...</p> }
     </div>
-  )
-}
+  );
+};
 
-export default UserDashboard
+export default UserDashboard;
