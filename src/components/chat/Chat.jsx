@@ -5,7 +5,7 @@ import { useUser } from "../../context/UserContext";
 import Message from "./Message";
 import { db } from "../../firebase";
 import { collection, doc, getDocs, orderBy, query, serverTimestamp, setDoc } from "@firebase/firestore";
-// import Speech from "./SpeechToText";
+import SpeechToText from "./SpeechToText";
 
 const Chat = () => {
   const {file_name} = useParams()
@@ -74,7 +74,7 @@ const Chat = () => {
   } else {
     synthesis = false;
   }
-  console.log("this is synthesis: ", synthesis);
+  // console.log("this is synthesis: ", synthesis);
   return (
     <div>
       <ScrollableFeed className="mb-16">
@@ -106,7 +106,7 @@ const Chat = () => {
               Send
             </button>
         </form>
-        {/* {synthesis && <Speech question={question} setQuestion={setQuestion} />} */}
+        <SpeechToText question={question} setQuestion={setQuestion} />
       </div>
       </div>
     </div>
