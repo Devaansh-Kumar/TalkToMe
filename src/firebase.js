@@ -5,13 +5,13 @@ import {getFirestore} from 'firebase/firestore'
 import {getStorage} from 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD6ewFOgAbwFk1wb0fJxiF8lD5etlUrvo4",
-    authDomain: "talktome-e4031.firebaseapp.com",
-    projectId: "talktome-e4031",
-    storageBucket: "talktome-e4031.appspot.com",
-    messagingSenderId: "321649043713",
-    appId: "1:321649043713:web:a124be3a0ac68542799300",
-    measurementId: "G-HKK4VYHN83"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID
   };
 
 // Initialize Firebase
