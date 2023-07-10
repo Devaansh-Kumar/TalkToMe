@@ -3,6 +3,15 @@ import annyang from 'annyang';
 
 const SpeechToText = ({question, setQuestion}) => {
   const [isListening, setIsListening] = useState(false);
+  // const [annyang, setAnnyang] = useState("");
+  // const annyang = await import ("annyang");
+  
+  // useEffect(() => {
+  //   async () => {
+  //     const annyang = await import ("annyang");
+  //     setAnnyang(annyang);
+  //   }
+  // }, [annyang, setAnnyang]);
 
   useEffect(() => {
     if (isListening) {
