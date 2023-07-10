@@ -33,7 +33,7 @@ export default function NavBar() {
   <NavItem path="/dashboard" name="Dashboard"/>
 )
 }      <NavItem path="/about" name="About"/>
-      <NavItem path="https://github.com/Devaansh-Kumar/TalkToMe/" name="Github"/>
+      <NavItem path="https://github.com/Devaansh-Kumar/TalkToMe/" name="Github" target="_blank"/>
     </ul>
   </div>
   </div>
