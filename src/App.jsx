@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/dashboard" element={<RequireAuth><UserDashboard/></RequireAuth>}/>
-        <Route path="/chat" element={<RequireAuth><Chat/></RequireAuth>} />
+        <Route path="/chat/:file_name" element={<RequireAuth><Chat/></RequireAuth>} />
         <Route path="/about" element={<AboutUs/>} />
       </Routes>
     </div>
