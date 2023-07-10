@@ -1,12 +1,12 @@
 import React from "react";
 
-const Teamates = ({name, github, linkedin}) => {
+const Teamates = ({name, github, linkedin, picture}) => {
   return (
     <div class="w-64 max-w-sm my-5 transition duration-300 hover:scale-110 bg-white border border-gray-200 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700 pt-8">
       <div class="flex flex-col items-center pb-10">
         <img
           class="w-24 h-24 mb-3 rounded-full shadow-lg"
-          src="/harshitgupta.jpg"
+          src={picture}
           alt=""
         />
         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">

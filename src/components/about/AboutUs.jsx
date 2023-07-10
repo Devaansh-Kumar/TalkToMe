@@ -29,26 +29,31 @@ const AboutUs = () => {
           name="Harshit Gupta"
           linkedin="https://www.linkedin.com/in/harshit-gupta-174806229/"
           github="https://github.com/hgupta12"
+          picture="/harshitgupta.jpg"
         />
         <Teamates
           name="Devaansh Kumar"
           linkedin="https://www.linkedin.com/in/devaansh-kumar/"
           github="https://github.com/Devaansh-Kumar/"
+          picture="/harshitgupta.jpg"
         />
         <Teamates
           name="Bharadwaja Meher"
           linkedin="https://www.linkedin.com/in/bharadwaja-m-ch/"
           github="https://github.com/MeherRushi"
+          picture="/meher.jpg"
         />
         <Teamates
           name="Chinmaya Sahu"
           linkedin="https://www.linkedin.com/in/chinmaya-s/"
           github="https://github.com/csking101"
+          picture="/harshitgupta.jpg"
         />
         <Teamates
           name="Ankit Dash"
           linkedin="https://www.linkedin.com/in/ankitdash/"
           github="https://github.com/helios2003"
+          picture="/harshitgupta.jpg"
         />
       </div>
       

@@ -12,7 +12,7 @@ const Chat = () => {
   const {currentUser} = useUser()
   const [question, setQuestion] = useState("");
   const [currentChat, setCurrentChat] = useState([]);
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState(null);
 
 
   const loadHistory = async ()=>{
@@ -75,7 +75,7 @@ const Chat = () => {
   return (
     <div>
       <ScrollableFeed className="mb-16">
-       {chatHistory.length? chatHistory.map(chat=>(
+       {chatHistory? chatHistory.map(chat=>(
         <div key={`${chat.id}`}>
         <Message  type="question" message={chat.question} profilePic={currentUser.profile_pic}/>
         <Message type="answer" message={chat.answer} profilePic="/bot.png" />
@@ -102,7 +102,7 @@ const Chat = () => {
               Send
             </button>
         </form>
-        {synthesis && <Speech question={question} setQuestion={setQuestion} />}
+        {/* {synthesis && <Speech question={question} setQuestion={setQuestion} />} */}
       </div>
       </div>
     </div>
