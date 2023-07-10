@@ -12,7 +12,8 @@ const Chat = () => {
   const {currentUser} = useUser()
   const [question, setQuestion] = useState("");
   const [currentChat, setCurrentChat] = useState([]);
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState(null);
+  const [fetching, setFetching] = useState(false);
 
 
   const loadHistory = async ()=>{
@@ -36,6 +37,7 @@ const Chat = () => {
       return;
     }
     // TODO - show question on chat
+    setFetching(true);
     const docRef = doc(collection(db,"chats",currentUser.uid,file_name))
     setCurrentChat(prev=> [...prev,{id:`${docRef.id}-q`,type:"question",message:question}])
     // getting answer
@@ -56,6 +58,7 @@ const Chat = () => {
     // TODO - show answer on chat
     setCurrentChat(prev=> [...prev,{id:`${docRef.id}-a`,type:"answer",message:data.answer}])
     // TODO - store answer in firestore
+    setFetching(false)
     const convoItem = {
       question,
       answer: data.answer,
@@ -68,7 +71,7 @@ const Chat = () => {
   return (
     <div>
       <ScrollableFeed className="mb-16">
-       {chatHistory.length? chatHistory.map(chat=>(
+       {chatHistory? chatHistory.map(chat=>(
         <div key={`${chat.id}`}>
         <Message  type="question" message={chat.question} profilePic={currentUser.profile_pic}/>
         <Message type="answer" message={chat.answer} profilePic="/bot.png" />
@@ -90,7 +93,8 @@ const Chat = () => {
             />
             <button
               type="submit"
-              className="mx-2 rounded  px-2 my-1 text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium"
+              className={`mx-2 rounded  px-2 my-1 text-white font-medium focus:ring-4 focus:outline-none focus:ring-blue-300 ${fetching? 'cursor-not-allowed bg-gray-500 hover:bg-gray-800':' bg-blue-500 hover:bg-blue-600 '}`}
+              disabled={fetching?"true":false}
             >
               Send
             </button>
