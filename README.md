@@ -43,6 +43,7 @@ Ensure that you are on Chrome to be able to use the speech to text feature!
 * Storage of Chat History of Files uploaded previously by User
 * Integration of Google OAuth
 * Access from anywhere in the World!
+* Responsive UI on Mobile Devices
 
 # List of planned features:
 
@@ -53,4 +54,14 @@ Ensure that you are on Chrome to be able to use the speech to text feature!
 
 # Screenshots:
 
-![Login user](./screenshots/login.png?raw=true "Login User")
+## Landing Page
+![Landing Page](./public/ss/home1.png)
+## Home Page
+![Home Page](./public/ss/home2.png)
+## Dashboard for a New User
+![Dashboard for a New User](./public/ss/dash1.png)
+## Dashboard after Upload
+![Dashboard after Upload](./public/ss/dash2.png)
+## Question and Answers
+![Question and Answers with the Agent](./public/ss/chat1.png)
+![More Question and Answers with the Agent](./public/ss/chat2.png)
